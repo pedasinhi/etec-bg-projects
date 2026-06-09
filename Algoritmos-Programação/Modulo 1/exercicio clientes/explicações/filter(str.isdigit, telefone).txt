@@ -1,0 +1,17 @@
+digits = "".join(filter(str.isdigit, telefone)):
+entra: (11)91347-0374.
+filter(str.isdigit, telefone):
+str.isdigit: verifica se apenas numeros foram digitados se sim: true, se haver caracteres como "a" ele gerará: false.
+filter(): mantem apenas os valores que retornam como true e transfor em algo assim:
+1
+1
+9
+1
+3
+4
+7
+0
+3
+7
+4.
+"".join(...): junta tudo em uma string: 11913470374
