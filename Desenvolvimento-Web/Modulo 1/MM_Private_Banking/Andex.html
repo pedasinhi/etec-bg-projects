@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Atendimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="logo">MM Private Banking</div>
+        <nav>
+          <a href="index.html">Voltar</a>
+        </nav>
+      </div>
+    </header>
+    <section class="form-section">
+      <div class="form-card">
+        <h1>Solicitação de Atendimento</h1>
+        <form action="https://formsubmit.co/guilhermecoelhog@gmail.com" method="POST">
+          <input type="text" name="nome" placeholder="Nome completo" required>
+          <input type="email" name="email" placeholder="E-mail" required>
+          <input type="text" name="telefone" placeholder="Telefone" required>
+          <select name="patrimonio">
+            <option>Até R$ 100 mil</option>
+            <option>R$ 100 mil a R$ 500 mil</option>
+            <option>R$ 500 mil a R$ 1 milhão</option>
+            <option>Acima de R$ 1 milhão</option>
+          </select>
+          <textarea name="mensagem" placeholder="Mensagem"></textarea>
+          <button type="submit">Enviar Solicitação</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
