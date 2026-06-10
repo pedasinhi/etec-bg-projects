@@ -1,0 +1,27 @@
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 650px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    padding: 14px 12px;
+    text-align: center;
+    font-weight: 500;
+    color: #495057;
+    border-bottom: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+}
