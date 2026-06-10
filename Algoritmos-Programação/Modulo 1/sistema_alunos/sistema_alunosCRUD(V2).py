@@ -1,5 +1,16 @@
 import os  # 'import' traz o módulo 'os' (sistema operacional) para usar a função 'os.path.exists' mais adiante
 
+class Estudante: # classe estudante
+    def __init__(self, nome_aluno: str, nota_aluno: float):
+        self._nome = nome_aluno
+        self._nota = nota_aluno
+
+    def aluno(self) -> str: # metodo aluno
+        return self._nome
+
+    def nota(self) -> float: # metodo nota
+        return self._nota
+
 # CORES (Códigos de escape ANSI armazenados em variáveis do tipo string para estilizar o texto do terminal)
 CYAN = "\033[96m"  # Variável string para a cor ciano claro
 GREEN = "\033[92m"  # Variável string para a cor verde claro
@@ -16,7 +27,7 @@ ARQUIVO = "alunos.txt"  # Variável constante que guarda o nome do arquivo de te
 def separador(char: str = "=", largura: int = 45):  # 'def' define a função, com parâmetros que possuem tipagem (str, int) e valores padrão ('=' e 45)
     print(f"{CYAN}{char * largura}{RESET}")  # 'print' exibe uma f-string que aplica a cor CYAN, multiplica o caractere pela largura e aplica o RESET
 
-def exibir_menu():  # 'def' define a função 'exibir_menu' que não recebe parâmetros e serve para desenhar a interface
+def exibir_menu():  # 'def' define a função 'exibir_menu' que não recebe parâmetros e serve para desenhos a interface
     separador()  # Executa a função 'separador()' usando os argumentos padrão dela
     print(f"{CYAN}{'SISTEMA DE ALUNOS':^45}{RESET}")  # 'print' com f-string usando o modificador ':^45' para centralizar o texto em um bloco de 45 espaços
     separador()  # Executa novamente a função 'separador()' para fechar o cabeçalho do menu
@@ -47,8 +58,11 @@ def cadastrar_aluno():  # 'def' cria a função que encapsula toda a lógica de 
         except ValueError:  # 'except' captura especificamente o erro 'ValueError' caso o 'float()' receba letras em vez de números
             print(f"{RED}Digite apenas números.{RESET}")  # 'print' exibe o aviso de erro formatado na cor vermelha
 
+    # Uso da classe solicitada para encapsular os dados antes de salvar
+    objeto_aluno = Estudante(nome, nota)
+
     with open(ARQUIVO, "a", encoding="utf-8") as arquivo:  # 'with' gerencia o arquivo, 'open()' abre no modo append ('a') com charset 'utf-8', apelidando-o de 'arquivo'
-        arquivo.write(f"{nome};{nota}\n")  # Método '.write()' grava a f-string contendo as variáveis separadas por ';' e adiciona o quebra-linha '\n'
+        arquivo.write(f"{objeto_aluno.aluno()};{objeto_aluno.nota()}\n")  # Método '.write()' grava a f-string contendo as variáveis separadas por ';' e adiciona o quebra-linha '\n'
 
     print(f"{GREEN}Aluno cadastrado com sucesso!{RESET}")  # 'print' exibe a mensagem de sucesso colorida em verde
 
@@ -78,12 +92,15 @@ def listar_alunos():  # 'def' define a função responsável por ler, tratar e f
             nome, nota = linha.split(";")  # '.split(";")' quebra a string onde houver ';' e o operador '=' desempacota os dois pedaços nas variáveis 'nome' e 'nota'
             nota = float(nota)  # Converte a string 'nota' que veio do arquivo de volta para o tipo numérico 'float'
 
-            status = "APROVADO" if nota >= 6 else "REPROVADO"  # Operador ternário: atribui "APROVADO" se a nota for maior/igual a 6, senão atribui "REPROVADO"
-            cor_status = GREEN if nota >= 6 else RED  # Operador ternário: escolhe a variável de cor 'GREEN' para aprovados ou 'RED' para reprovados
+            # Uso da classe solicitada para processar a listagem
+            objeto_aluno = Estudante(nome, nota)
+
+            status = "APROVADO" if objeto_aluno.nota() >= 6 else "REPROVADO"  # Operador ternário: atribui "APROVADO" se a nota for maior/igual a 6, senão atribui "REPROVADO"
+            cor_status = GREEN if objeto_aluno.nota() >= 6 else RED  # Operador ternário: escolhe a variável de cor 'GREEN' para aprovados ou 'RED' para reprovados
 
             print(  # 'print' estruturado em várias linhas para exibir as informações alinhadas e coloridas dinamicamente
-                f"{WHITE}{nome:<25}{RESET} "  # Exibe o nome do aluno em branco, ocupando obrigatoriamente 25 espaços alinhado à esquerda
-                f"{cor_status}{nota:>6.1f}{RESET}   "  # Exibe a nota formatada com uma casa decimal ('.1f'), ocupando 6 espaços à direita, na cor do status
+                f"{WHITE}{objeto_aluno.aluno():<25}{RESET} "  # Exibe o nome do aluno em branco, ocupando obrigatoriamente 25 espaços alinhado à esquerda
+                f"{cor_status}{objeto_aluno.nota():>6.1f}{RESET}   "  # Exibe a nota formatada com uma casa decimal ('.1f'), ocupando 6 espaços à direita, na cor do status
                 f"{cor_status}{status}{RESET}"  # Exibe o texto do status ("APROVADO"/"REPROVADO") com a sua respectiva cor correspondente
             )
 
@@ -135,7 +152,9 @@ def alterar_aluno():  # 'def' inicia a função encarregada de buscar, modificar
                 except ValueError:  # Bloco acionado caso o usuário insira caracteres não numéricos na nota
                     print(f"{RED}Digite apenas números.{RESET}")  # Exibe aviso em vermelho instruindo o usuário sobre o erro de digitação
 
-            novos_alunos.append(f"{novo_nome};{nova_nota}")  # Monta a nova string formatada e a insere na lista de atualizados via '.append()'
+            # Uso da classe solicitada para estruturar a alteração
+            objeto_alterado = Estudante(novo_nome, nova_nota)
+            novos_alunos.append(f"{objeto_alterado.aluno()};{objeto_alterado.nota()}")  # Monta a nova string formatada e a insere na lista de atualizados via '.append()'
         else:  # Bloco executado para todos os outros alunos que não eram o alvo da alteração
             novos_alunos.append(registro)  # Mantém o registro original intacto, adicionando-o direto na lista 'novos_alunos'
 
@@ -144,7 +163,7 @@ def alterar_aluno():  # 'def' inicia a função encarregada de buscar, modificar
         return  # Sai da função sem alterar o arquivo de texto
 
     with open(ARQUIVO, "w", encoding="utf-8") as arquivo:  # Abre o arquivo no modo escrita ('w'), o que apaga o arquivo antigo para reescrevê-lo do zero
-        for aluno in novos_alunos:  # Laço 'for' percorre cada string formatada de dentro da lista atualizada 'novos_alunos'
+        for aluno in novos_alunos:  # Laço 'for' percorre cada string formatada de dentro da lista updated 'novos_alunos'
             arquivo.write(f"{aluno}\n")  # Escreve o registro atualizado inserindo manualmente a quebra de linha '\n' no arquivo
 
     print(f"{GREEN}Aluno alterado com sucesso!{RESET}")  # 'print' confirma o sucesso da alteração exibindo o texto em verde
@@ -165,7 +184,7 @@ def excluir_aluno():  # 'def' define a função responsável por remover um regi
     for linha in linhas:  # Laço 'for' navega por cada uma das linhas carregadas do arquivo de texto
         linha = linha.strip()  # Trata a string removendo quebras de linha ou recuos em branco nas extremidades
 
-        if linha:  # Avalia se a linha possui caracteres válidos antes de processá-la
+        if linha:  # VALIDAÇÃO CORRIGIDA AQUI: agora checa a variável certa 'linha'
             alunos.append(linha)  # Adiciona a linha válida dentro do array/lista 'alunos' por meio do método '.append()'
 
     novos_alunos = []  # Inicializa a lista que guardará todos os alunos, com exceção daquele que será excluído
@@ -194,7 +213,7 @@ while True:  # Loop 'while True' inicia o motor principal do programa, rodando d
 
     opcao = input(f"{MAGENTA}Escolha uma opção: {RESET}").strip()  # Coleta a opção digitada, injeta cor magenta na pergunta e limpa com '.strip()'
 
-    if opcao == "1":  # 'if' verifica se o caractere digitado corresponds textualmente a "1"
+    if opcao == "1":  # 'if' verifica se o caractere digitado corresponde textualmente a "1"
         cadastrar_aluno()  # Invoca a execução da função de cadastro de alunos se a condição for verdadeira
 
     elif opcao == "2":  # 'elif' avalia se a string digitada é exatamente igual a "2"
