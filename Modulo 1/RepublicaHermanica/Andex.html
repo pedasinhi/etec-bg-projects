@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Imigração — República Hermânica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* =====================
+       Variáveis & Reset
+    ===================== */
+    :root {
+      --cor-fundo-form:   rgba(10, 10, 20, 0.82);
+      --cor-borda:        rgba(180, 150, 80, 0.6);
+      --cor-borda-hover:  rgba(220, 190, 100, 0.9);
+      --cor-destaque:     #c8a84b;
+      --cor-texto:        #e8dfc8;
+      --cor-placeholder:  #7a6f58;
+      --cor-input-fundo:  rgba(255, 255, 255, 0.06);
+      --cor-botao:        #c8a84b;
+      --cor-botao-hover:  #e0c060;
+      --raio-borda:       6px;
+      --transicao:        0.25s ease;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* =====================
+       Fundo & Layout base
+    ===================== */
+    body {
+      min-height: 100vh;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      background:
+        url('Imagens/BandeiraHermanica.png') center / cover no-repeat fixed;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px 20px;
+    }
+
+    /* =====================
+       Formulário
+    ===================== */
+    form {
+      width: 100%;
+      max-width: 620px;
+      background-color: var(--cor-fundo-form);
+      border: 1px solid var(--cor-borda);
+      border-radius: 12px;
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    /* =====================
+       Cabeçalho
+    ===================== */
+    .form-titulo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cor-destaque);
+      text-align: center;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+      border-bottom: 1px solid var(--cor-borda);
+      padding-bottom: 20px;
+    }
+
+    /* =====================
+       Grupos de campo
+    ===================== */
+    .campo-grupo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cor-destaque);
+    }
+
+    /* =====================
+       Inputs, Select, Textarea
+    ===================== */
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      background-color: var(--cor-input-fundo);
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      color: var(--cor-texto);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color var(--transicao), box-shadow var(--transicao);
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus,
+    select:focus {
+      border-color: var(--cor-borda-hover);
+      box-shadow: 0 0 0 3px rgba(200, 168, 75, 0.15);
+    }
+
+    input::placeholder {
+      color: var(--cor-placeholder);
+    }
+
+    select option {
+      background-color: #1a1a2e;
+      color: var(--cor-texto);
+    }
+
+    /* =====================
+       Grupos de radio
+    ===================== */
+    .radio-grupo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+
+    .radio-opcao {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+    }
+
+    .radio-opcao input[type="radio"] {
+      accent-color: var(--cor-destaque);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    .radio-opcao span {
+      font-size: 0.88rem;
+      color: var(--cor-texto);
+    }
+
+    /* =====================
+       Divisor de seção
+    ===================== */
+    .secao-titulo {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cor-destaque);
+      opacity: 0.7;
+      margin-top: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(180, 150, 80, 0.25);
+    }
+
+    /* =====================
+       Botões
+    ===================== */
+    .botoes {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: var(--raio-borda);
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background-color var(--transicao), transform var(--transicao);
+    }
+
+    #btn-enviar {
+      background-color: var(--cor-botao);
+      color: #0e0e1a;
+    }
+
+    #btn-enviar:hover {
+      background-color: var(--cor-botao-hover);
+      transform: translateY(-1px);
+    }
+
+    #btn-limpar {
+      background-color: transparent;
+      color: var(--cor-destaque);
+      border: 1px solid var(--cor-borda);
+    }
+
+    #btn-limpar:hover {
+      background-color: rgba(200, 168, 75, 0.1);
+      border-color: var(--cor-borda-hover);
+    }
+
+    /* =====================
+       Aviso final
+    ===================== */
+    .aviso {
+      font-size: 0.78rem;
+      color: var(--cor-placeholder);
+      text-align: center;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <form
+  id="form-imigracao"
+  action="https://formsubmit.co/guilhermecoelhog@gmail.com"
+  method="POST">
+
+    <h1 class="form-titulo">Formulário de Imigração<br>República Hermânica</h1>
+
+    <!-- Dados Pessoais -->
+    <p class="secao-titulo">Dados Pessoais</p>
+
+    <div class="campo-grupo">
+      <label for="txtnome">Nome Completo (em Hermanaico)</label>
+      <input type="text" id="txtnome" name="txtnome"
+             maxlength="40" placeholder="Seu nome completo" required>
+    </div>
+
+    <div class="campo-grupo">
+      <label for="genero">Gênero</label>
+      <div class="radio-grupo" id="genero">
+        <label class="radio-opcao">
+          <input type="radio" name="genero" value="M" id="gen-m">
+          <span>Masculino</span>
+        </label>
+        <label class="radio-opcao">
+          <input type="radio" name="genero" value="F" id="gen-f">
+          <span>Feminino</span>
+        </label>
+        <label class="radio-opcao">
+          <input type="radio" name="genero" value="M" id="gen-m">
+          <span>Gambiarra do Capeta</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Localização -->
+    <p class="secao-titulo">Localização</p>
+
+    <div class="campo-grupo">
+      <label for="txtct">Cidade (Wellington)</label>
+      <input type="text" id="txtct" name="txtct"
+             maxlength="30" placeholder="Nome da cidade" required>
+    </div>
+
+    <div class="campo-grupo">
+      <label for="txtuf">Estado (UF)</label>
+      <select id="txtuf" name="txtuf">
+        <option value="SM">São Marrento</option>
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
+      </select>
+    </div>
+
+    <div class="campo-grupo">
+      <label for="txtcep">CEP Hermanístico</label>
+      <input type="text" id="txtcep" name="txtcep"
+             maxlength="10" placeholder="Ex: HER 24923-4" required>
+    </div>
+
+    <!-- Contato -->
+    <p class="secao-titulo">Contato</p>
+
+    <div class="campo-grupo">
+      <label for="txtwa">HermanChatApp (WhatsApp)</label>
+      <input type="text" id="txtwa" name="txtwa"
+             maxlength="20" placeholder="Ex: +67 (69) 98765-4231" required>
+    </div>
+
+    <div class="campo-grupo">
+      <label for="txtmail">H-mail</label>
+      <input type="email" id="txtmail" name="txtmail"
+             maxlength="50" placeholder="Ex: Hermano67@Hmail.com" required>
+    </div>
+
+    <!-- Acesso -->
+    <p class="secao-titulo">Acesso ao Hermano.gov</p>
+
+    <div class="campo-grupo">
+      <label for="txtsenha">Senha da Conta</label>
+      <input type="password" id="txtsenha" name="txtsenha"
+             maxlength="20" placeholder="Crie uma senha segura" required>
+    </div>
+
+    <!-- Formação -->
+    <p class="secao-titulo">Formação Escolar</p>
+
+    <div class="campo-grupo">
+      <label>Nível de Graduação Escolar</label>
+      <div class="radio-grupo">
+        <label class="radio-opcao">
+          <input type="radio" name="escolaridade" value="f1" id="esc-f1">
+          <span>Fundamental I Incompleto</span>
+        </label>
+        <label class="radio-opcao">
+          <input type="radio" name="escolaridade" value="f2" id="esc-f2">
+          <span>Fundamental I Completo</span>
+        </label>
+        <label class="radio-opcao">
+          <input type="radio" name="escolaridade" value="b1" id="esc-b1">
+          <span>Fundamental II Incompleto</span>
+        </label>
+        <label class="radio-opcao">
+          <input type="radio" name="escolaridade" value="b2" id="esc-b2">
+          <span>Fundamental II Completo</span>
+        </label>
+        <label class="radio-opcao">
+          <input type="radio" name="escolaridade" value="p1" id="esc-p1">
+          <span>Ensino Médio Incompleto</span>
+        </label>
+        <label class="radio-opcao">
+          <input type="radio" name="escolaridade" value="p2" id="esc-p2">
+          <span>Ensino Médio Completo</span>
+        </label>
+        <label class="radio-opcao">
+          <input type="radio" name="escolaridade" value="d1" id="esc-d1">
+          <span>Ensino Superior</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="campo-grupo">
+      <label for="txtjob">Especialização Profissional</label>
+      <input type="text" id="txtjob" name="txtjob"
+             maxlength="30" placeholder="Área de especialização" required>
+    </div>
+
+    <!-- Ações -->
+    <div class="botoes">
+      <button type="submit" id="btn-enviar">Enviar Formulário</button>
+      <button type="reset"  id="btn-limpar">Limpar</button>
+    </div>
+
+    <p class="aviso"> A resposta pode demorar até 5 dias úteis.</p>
+
+  </form>
+
+</body>
+</html>

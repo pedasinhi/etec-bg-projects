@@ -1,0 +1,315 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    position: relative;
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("imagens/logoMM.png");
+    background-repeat: repeat;
+    background-size: 120px;
+    opacity: 0.10;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    background:#000;
+    border-bottom:1px solid #222;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 0;
+    min-height:90px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:#fff;
+    font-size:1.3rem;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.logo img{
+    height:80px;
+    width:auto;
+    display:block;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav a:hover{
+    opacity:.7;
+}
+
+.button{
+    background:#fff;
+    color:#000;
+    padding:12px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.button:hover{
+    transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+    background:#fff;
+    padding:80px 0;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.hero .container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:60px;
+}
+
+.hero-content h1{
+    font-size:4rem;
+    line-height:1.05;
+    margin-bottom:20px;
+    max-width:650px;
+}
+
+.tag{
+    color:#666;
+    letter-spacing:1px;
+    font-size:.85rem;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#666;
+    max-width:550px;
+    margin-bottom:35px;
+}
+
+.hero-image img{
+    width:100%;
+    height:550px;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+/* SECTIONS */
+
+.section{
+    padding:90px 0;
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.alt{
+    background:#fafafa;
+}
+
+h2{
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+/* SOBRE */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-grid img{
+    width:100%;
+    border-radius:12px;
+    height:350px;
+    object-fit:cover;
+}
+
+/* SERVIÇOS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:30px;
+    text-align:center;
+    transition:.2s;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#666;
+}
+
+/* CONTATO */
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+/* FORMULÁRIO */
+
+.form-section{
+    padding:80px 20px;
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.form-card{
+    background:#fff;
+    width:100%;
+    max-width:850px;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    padding:50px;
+    box-shadow:0 8px 30px rgba(0,0,0,.05);
+}
+
+.form-card h1{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:2.5rem;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:16px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font:inherit;
+}
+
+textarea{
+    min-height:150px;
+}
+
+button{
+    background:#111;
+    color:#fff;
+    border:none;
+    padding:16px;
+    border-radius:10px;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+    background:#fff;
+    padding:30px 0;
+}
+
+.footer-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.social{
+    display:flex;
+    gap:15px;
+}
+
+.social a{
+    color:#111;
+    text-decoration:none;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+    .hero .container{
+        grid-template-columns:1fr;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content h1{
+        font-size:2.8rem;
+    }
+
+    .nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}

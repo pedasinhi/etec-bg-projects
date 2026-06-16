@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>República Hermânica — Portal Oficial do Governo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dourado:       #c8a84b;
+      --dourado-hover: #e0c060;
+      --fundo-card:    rgba(10, 10, 20, 0.82);
+      --fundo-header:  rgba(6, 6, 14, 0.97);
+      --borda:         rgba(180, 150, 80, 0.5);
+      --borda-hover:   rgba(220, 190, 100, 0.9);
+      --texto:         #e8dfc8;
+      --texto-muted:   #7a6f58;
+      --raio:          6px;
+      --transicao:     0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      color: var(--texto);
+      background-color: black;
+/*      background: url('Imagens/BandeiraHermanica.png') center / cover no-repeat fixed;*/
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Faixa institucional ── */
+
+    .faixa-gov {
+      background-color: var(--dourado);
+      color: #0e0e1a;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 5px 40px;
+    }
+
+    /* ── Header ── */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--fundo-header);
+      border-bottom: 1px solid var(--borda);
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+    }
+
+    .header-marca {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .header-marca strong {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dourado);
+      letter-spacing: 0.06em;
+    }
+
+    .header-marca span {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--texto-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-nav {
+      padding: 7px 16px;
+      border-radius: var(--raio);
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background-color var(--transicao), border-color var(--transicao);
+      border: 1px solid var(--borda);
+      background: transparent;
+      color: var(--dourado);
+    }
+
+    .btn-nav:hover {
+      background: rgba(200, 168, 75, 0.1);
+      border-color: var(--borda-hover);
+    }
+
+    .btn-nav.destaque {
+      background-color: var(--dourado);
+      color: #0e0e1a;
+      border-color: var(--dourado);
+    }
+
+    .btn-nav.destaque:hover {
+      background-color: var(--dourado-hover);
+      border-color: var(--dourado-hover);
+    }
+
+    /* ── Hero ── */
+
+    .hero {
+      padding: 90px 48px 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(6,6,14,0.7) 0%, transparent 100%);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--dourado);
+      opacity: 0.75;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--dourado);
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      text-shadow: 0 4px 40px rgba(200, 168, 75, 0.25);
+    }
+
+    .hero-linha {
+      width: 60px;
+      height: 1px;
+      background: var(--borda);
+    }
+
+    .hero p {
+      font-size: 0.9rem;
+      color: var(--texto-muted);
+      letter-spacing: 0.06em;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    /* ── Serviços ── */
+
+    .secao-titulo-bloco {
+      text-align: center;
+      padding: 60px 48px 30px;
+    }
+
+    .secao-titulo-bloco h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--dourado);
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .secao-titulo-bloco p {
+      font-size: 1.4rem;
+      font-family: 'Cinzel', serif;
+      color: var(--texto);
+      font-weight: 600;
+    }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 0 48px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .servico-card {
+      background-color: var(--fundo-card);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      backdrop-filter: blur(6px);
+      transition: border-color var(--transicao), transform var(--transicao);
+    }
+
+    .servico-card:hover {
+      border-color: var(--borda-hover);
+      transform: translateY(-2px);
+    }
+
+    .servico-icone {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .servico-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--dourado);
+      letter-spacing: 0.04em;
+    }
+
+    .servico-card p {
+      font-size: 0.82rem;
+      color: var(--texto-muted);
+      line-height: 1.6;
+    }
+
+    .servico-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--dourado);
+      opacity: 0.7;
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid rgba(180, 150, 80, 0.2);
+      transition: opacity var(--transicao);
+    }
+
+    .servico-card:hover .servico-link { opacity: 1; }
+
+    /* ── Comunicados ── */
+
+    .comunicados {
+      padding: 0 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .comunicado-item {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(180, 150, 80, 0.2);
+      transition: background-color var(--transicao);
+    }
+
+    .comunicado-item:first-child { border-top: 1px solid rgba(180, 150, 80, 0.2); }
+
+    .comunicado-data {
+      flex-shrink: 0;
+      width: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .comunicado-data strong {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--dourado);
+      line-height: 1;
+    }
+
+    .comunicado-data span {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--texto-muted);
+    }
+
+    .comunicado-corpo { flex: 1; }
+
+    .comunicado-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dourado);
+      opacity: 0.65;
+      margin-bottom: 6px;
+    }
+
+    .comunicado-corpo h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--texto);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .comunicado-corpo p {
+      font-size: 0.83rem;
+      color: var(--texto-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Banner imigração ── */
+
+    .banner-imigracao {
+      margin: 0 48px 80px;
+      background-color: var(--fundo-card);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      backdrop-filter: blur(6px);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1004px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .banner-imigracao-texto h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--dourado);
+      margin-bottom: 10px;
+    }
+
+    .banner-imigracao-texto p {
+      font-size: 0.85rem;
+      color: var(--texto-muted);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    .btn-imigracao {
+      flex-shrink: 0;
+      padding: 14px 32px;
+      background-color: var(--dourado);
+      color: #0e0e1a;
+      border: none;
+      border-radius: var(--raio);
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background-color var(--transicao), transform var(--transicao);
+      white-space: nowrap;
+    }
+
+    .btn-imigracao:hover {
+      background-color: var(--dourado-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ── Footer ── */
+
+    footer {
+      background-color: var(--fundo-header);
+      border-top: 1px solid var(--borda);
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .footer-titulo {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dourado);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-linha {
+      width: 36px;
+      height: 1px;
+      background: var(--borda);
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: var(--texto-muted);
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="faixa-gov">República Hermânica — Portal Oficial do Governo Federal</div>
+
+  <header>
+    <div class="header-inner">
+      <div class="header-marca">
+        <strong>Hermano.gov</strong>
+        <span>Ministério da Comunicação Hermânica</span>
+      </div>
+      <nav>
+        <a href="#servicos"><button class="btn-nav">Serviços</button></a>
+        <a href="#comunicados"><button class="btn-nav">Comunicados</button></a>
+        <a href="#imigracao"><button class="btn-nav">Imigração</button></a>
+        <button class="btn-nav destaque" onclick="window.location.href='Andex.html'">Solicitar Visto</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="hero-eyebrow">Governo Federal — Departamento de Serviços ao Cidadão</span>
+    <h1>Portal Oficial da<br>República Hermânica</h1>
+    <div class="hero-linha"></div>
+    <p>Acesse os serviços, comunicados e documentos oficiais do governo da República Hermânica.</p>
+  </section>
+
+  <div class="secao-titulo-bloco" id="servicos">
+    <h2>Serviços Disponíveis</h2>
+    <p>O que o governo oferece ao cidadão</p>
+  </div>
+
+  <div class="servicos-grid">
+    <div class="servico-card">
+      <div class="servico-icone">⚖️</div>
+      <h3>Ministério da Defesa</h3>
+      <p>Coordenação das forças da Tropa, monitoramento de ameaças e segurança territorial da República.</p>
+      <span class="servico-link">Acessar portal →</span>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">🌐</div>
+      <h3>Relações Exteriores</h3>
+      <p>Embaixadas no Metaverso, acordos internacionais e representação da República em 15 países.</p>
+      <span class="servico-link">Acessar portal →</span>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">🛂</div>
+      <h3>Imigração e Vistos</h3>
+      <p>Formulários de ingresso à República, requisitos de naturalização e emissão de documentos oficiais.</p>
+      <a href="Andex.html"><span class="servico-link">Solicitar agora →</span></a>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">🚀</div>
+      <h3>Departamento de Foguetes</h3>
+      <p>Programa espacial hermânico, satélites próprios e tecnologia de propulsão avançada.</p>
+      <span class="servico-link">Acessar portal →</span>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">💻</div>
+      <h3>Tecnologia & Infraestrutura</h3>
+      <p>Manutenção dos servidores da República, segurança digital e banco de dados governamental.</p>
+      <span class="servico-link">Acessar portal →</span>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">🪙</div>
+      <h3>Banco Hermânico</h3>
+      <p>Moeda oficial da Tropa, câmbio internacional e projeções econômicas para 2026.</p>
+      <span class="servico-link">Acessar portal →</span>
+    </div>
+  </div>
+
+  <div class="secao-titulo-bloco" id="comunicados">
+    <h2>Comunicados Oficiais</h2>
+    <p>Últimas notícias do governo</p>
+  </div>
+
+  <div class="comunicados">
+
+    <div class="comunicado-item">
+      <div class="comunicado-data"><strong>19</strong><span>Mai 2026</span></div>
+      <div class="comunicado-corpo">
+        <p class="comunicado-tag">Segurança Nacional</p>
+        <h3>Força-tarefa ROTA-FBI é oficialmente estabelecida no Capão Redondo</h3>
+        <p>O Ministério da Defesa confirma a operação conjunta após o aumento de movimentações suspeitas ligadas à aliança Sandrinha. Cidadãos devem permanecer em seus domicílios nas zonas de contenção.</p>
+      </div>
+    </div>
+
+    <div class="comunicado-item">
+      <div class="comunicado-data"><strong>17</strong><span>Mai 2026</span></div>
+      <div class="comunicado-corpo">
+        <p class="comunicado-tag">Tecnologia</p>
+        <h3>Portal do Hermano resiste a ataque cibernético de escala global</h3>
+        <p>Hackers de origem desconhecida tentaram comprometer os servidores da República. Todos foram neutralizados ao chegar na tela de login do Roblox. Enzo Chaves confirma: a infraestrutura supera a da NASA.</p>
+      </div>
+    </div>
+
+    <div class="comunicado-item">
+      <div class="comunicado-data"><strong>14</strong><span>Mai 2026</span></div>
+      <div class="comunicado-corpo">
+        <p class="comunicado-tag">Relações Exteriores</p>
+        <h3>15 países registram "Hermano" como o termo mais buscado da semana</h3>
+        <p>O Ministério das Relações Exteriores informa que líderes mundiais solicitaram audiência com a diretoria sediada no Capão Redondo. Novas embaixadas serão abertas oficialmente no Metaverso.</p>
+      </div>
+    </div>
+
+    <div class="comunicado-item">
+      <div class="comunicado-data"><strong>10</strong><span>Mai 2026</span></div>
+      <div class="comunicado-corpo">
+        <p class="comunicado-tag">Programa Espacial</p>
+        <h3>Departamento de Foguetes anuncia lançamento de satélite próprio</h3>
+        <p>O primeiro satélite da República Hermânica entrará em órbita no terceiro trimestre de 2026. Moradores relatam luzes estranhas no céu durante os testes de propulsão. O fenômeno é considerado normal pela agência espacial hermânica.</p>
+      </div>
+    </div>
+
+    <div class="comunicado-item">
+      <div class="comunicado-data"><strong>05</strong><span>Mai 2026</span></div>
+      <div class="comunicado-corpo">
+        <p class="comunicado-tag">Recrutamento</p>
+        <h3>Processo seletivo da Tropa está com inscrições abertas</h3>
+        <p>A República abre vagas para cidadãos com habilidades em Front-end e sobrevivência urbana. O treinamento ocorre em instalações sigilosas. Aprovados serão monitorados diretamente pelo Portal do Hermano.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="banner-imigracao" id="imigracao">
+    <div class="banner-imigracao-texto">
+      <h2>Solicite seu Visto Hermânico</h2>
+      <p>Cidadãos estrangeiros que desejam ingressar na República devem preencher o Formulário Oficial de Imigração. O processo leva até 5 dias úteis e exige documentação em Hermanaico.</p>
+    </div>
+    <button class="btn-imigracao" onclick="window.location.href='Andex.html'">Acessar Formulário</button>
+  </div>
+
+  <footer>
+    <p class="footer-titulo">República Hermânica</p>
+    <div class="footer-linha"></div>
+    <p>Hermano.gov — Todos os direitos reservados ao Governo Federal Hermânico</p>
+    <p>Desenvolvido por Enzo Chaves &amp; Guilherme Coelho — Departamento de Tecnologia</p>
+  </footer>
+
+</body>
+</html>     
