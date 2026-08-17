@@ -1,0 +1,1210 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
+
+/* ============================================================
+   HERMANO // NVIDIA RGB OVERDRIVE
+   DARK MODE: DELETED
+   ============================================================ */
+
+:root {
+    --green: #76ff00;
+    --lime: #c6ff00;
+    --cyan: #00ffff;
+    --blue: #0088ff;
+    --purple: #8a00ff;
+    --magenta: #ff00ee;
+    --pink: #ff0088;
+    --red: #ff003c;
+    --orange: #ff6600;
+    --yellow: #ffff00;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100%;
+    width: 100%;
+}
+
+/* ============================================================
+   BODY — RGB ABSOLUTO
+   ============================================================ */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    font-family: 'Orbitron', sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            #76ff00 0%,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            #00ffff 0%,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            #ff00ee 0%,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            #ff003c 0%,
+            transparent 25%
+        ),
+        linear-gradient(
+            120deg,
+            #76ff00,
+            #00ffff,
+            #0088ff,
+            #8a00ff,
+            #ff00ee,
+            #ff003c,
+            #ff6600,
+            #ffff00,
+            #76ff00
+        );
+
+    background-size:
+        200% 200%,
+        200% 200%,
+        200% 200%,
+        200% 200%,
+        800% 800%;
+
+    animation:
+        backgroundRGB 0.35s linear infinite;
+
+    overflow: hidden;
+}
+
+/* ============================================================
+   CAMADA RGB GIGANTE
+   ============================================================ */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: -50%;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 0, 0, .18) 0px,
+            rgba(255, 0, 0, .18) 3px,
+            rgba(0, 255, 0, .18) 6px,
+            rgba(0, 0, 255, .18) 9px,
+            rgba(255, 0, 255, .18) 12px
+        );
+
+    mix-blend-mode: screen;
+
+    animation: rave 0.08s linear infinite;
+
+    z-index: 0;
+}
+
+/* ============================================================
+   GRID RGB
+   ============================================================ */
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 48%,
+            rgba(255,255,255,.7) 50%,
+            transparent 52%
+        ),
+        linear-gradient(
+            0deg,
+            transparent 48%,
+            rgba(255,255,255,.7) 50%,
+            transparent 52%
+        );
+
+    background-size: 70px 70px;
+
+    mix-blend-mode: overlay;
+
+    animation:
+        gridRGB 0.07s linear infinite;
+
+    opacity: .55;
+
+    z-index: 1;
+}
+
+/* ============================================================
+   FORMULÁRIO
+   FUNDO TRANSPARENTE — ELEMENTOS INTERNOS NÃO SÃO AFETADOS
+   ============================================================ */
+
+#Equacao {
+    position: relative;
+    z-index: 5;
+
+    width: min(900px, 95vw);
+
+    padding: 55px;
+
+    border-radius: 35px;
+
+    /*
+       IMPORTANTE:
+       A transparência está somente nos RGBA abaixo.
+       NÃO usamos opacity no formulário.
+    */
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(118, 255, 0, .42),
+            rgba(0, 255, 255, .36),
+            rgba(0, 136, 255, .38),
+            rgba(138, 0, 255, .40),
+            rgba(255, 0, 238, .38),
+            rgba(255, 0, 60, .42),
+            rgba(255, 255, 0, .40),
+            rgba(118, 255, 0, .42)
+        );
+
+    background-size: 600% 600%;
+
+    animation:
+        panelRGB 0.18s linear infinite,
+        panelPulse .06s ease-in-out infinite alternate;
+
+    border: 8px solid white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 30px #76ff00,
+        0 0 60px #00ffff,
+        0 0 100px #ff00ee,
+        0 0 150px #ff003c,
+        0 0 200px #ffff00;
+
+    /*
+       Mostra o RGB que está atrás do formulário,
+       sem deixar os filhos transparentes.
+    */
+
+    backdrop-filter:
+        blur(8px)
+        saturate(180%);
+
+    -webkit-backdrop-filter:
+        blur(8px)
+        saturate(180%);
+
+    overflow: hidden;
+}
+
+/* ============================================================
+   BRILHO PASSANDO PELO PAINEL
+   ============================================================ */
+
+#Equacao::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(255,255,255,.9) 48%,
+            transparent 52%
+        );
+
+    background-size: 250% 250%;
+
+    animation: shine 0.12s linear infinite;
+
+    pointer-events: none;
+
+    mix-blend-mode: overlay;
+
+    z-index: 0;
+}
+
+/* ============================================================
+   LINHA DA EQUAÇÃO
+   ============================================================ */
+
+#Equacao > div {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #76ff00,
+            #00ffff,
+            #0088ff,
+            #8a00ff,
+            #ff00ee,
+            #ff003c,
+            #ffff00,
+            #76ff00
+        );
+
+    background-size: 500% 100%;
+
+    animation:
+        rainbow 0.10s linear infinite;
+
+    box-shadow:
+        0 0 15px white,
+        0 0 35px #76ff00,
+        0 0 70px #00ffff,
+        0 0 100px #ff00ee;
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+input {
+    position: relative;
+    z-index: 20;
+
+    width: 140px;
+
+    padding: 18px 10px;
+
+    border: 5px solid white;
+
+    border-radius: 15px;
+
+    outline: none;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #76ff00,
+            #00ffff,
+            #0088ff,
+            #8a00ff,
+            #ff00ee,
+            #ff003c,
+            #ff6600,
+            #ffff00,
+            #76ff00
+        );
+
+    background-size: 700% 100%;
+
+    animation:
+        inputRGB 0.07s linear infinite;
+
+    text-shadow:
+        0 0 5px #000,
+        0 0 10px #000,
+        0 0 20px white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #76ff00,
+        0 0 40px #00ffff,
+        0 0 60px #ff00ee;
+
+    transition:
+        .2s ease;
+}
+
+/* ============================================================
+   PLACEHOLDER
+   ============================================================ */
+
+input::placeholder {
+    color: white;
+
+    opacity: 1;
+
+    text-shadow:
+        0 0 5px #000,
+        0 0 12px #000;
+}
+
+/* ============================================================
+   INPUT HOVER
+   ============================================================ */
+
+input:hover {
+    transform:
+        scale(1.12)
+        rotate(-2deg);
+
+    box-shadow:
+        0 0 10px white,
+        0 0 30px #76ff00,
+        0 0 60px #00ffff,
+        0 0 100px #ff00ee,
+        0 0 140px #ff003c;
+}
+
+/* ============================================================
+   INPUT FOCUS
+   ============================================================ */
+
+input:focus {
+    transform:
+        scale(1.18)
+        rotate(2deg);
+
+    animation:
+        inputRGB 0.035s linear infinite;
+
+    border-color: white;
+
+    box-shadow:
+        0 0 15px white,
+        0 0 40px #76ff00,
+        0 0 70px #00ffff,
+        0 0 100px #ff00ee,
+        0 0 140px #ff003c;
+}
+
+/* ============================================================
+   RESULTADOS
+   ============================================================ */
+
+#resudelta,
+#raiz1,
+#raiz2 {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(500px, 90%);
+
+    margin: 10px auto;
+
+    border-width: 6px;
+
+    padding: 18px;
+
+    font-size: 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #76ff00,
+            #00ffff,
+            #0088ff,
+            #8a00ff,
+            #ff00ee,
+            #ff003c,
+            #ff6600,
+            #ffff00,
+            #76ff00
+        );
+
+    background-size: 800% 100%;
+
+    animation:
+        resultRGB 0.055s linear infinite,
+        resultPulse 0.035s ease-in-out infinite alternate;
+}
+
+/* ============================================================
+   DELTA
+   ============================================================ */
+
+#resudelta {
+    border-color: #ffff00;
+
+    box-shadow:
+        0 0 10px #ffff00,
+        0 0 30px #ff6600,
+        0 0 60px #ff003c,
+        0 0 100px #ff00ee;
+}
+
+/* ============================================================
+   PRIMEIRA RAIZ
+   ============================================================ */
+
+#raiz1 {
+    border-color: #00ffff;
+
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 30px #0088ff,
+        0 0 60px #8a00ff,
+        0 0 100px #ff00ee;
+}
+
+/* ============================================================
+   SEGUNDA RAIZ
+   ============================================================ */
+
+#raiz2 {
+    border-color: #76ff00;
+
+    box-shadow:
+        0 0 10px #76ff00,
+        0 0 30px #00ffff,
+        0 0 60px #0088ff,
+        0 0 100px #ff00ee;
+}
+
+/* ============================================================
+   LABELS
+   ============================================================ */
+
+label {
+    position: relative;
+
+    z-index: 20;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    color: white;
+
+    text-shadow:
+        0 0 5px #000,
+        0 0 10px #fff,
+        0 0 20px #76ff00,
+        0 0 35px #00ffff,
+        0 0 50px #ff00ee;
+
+    animation:
+        textRGB 0.035s linear infinite,
+        textShake 0.05s ease-in-out infinite;
+}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+
+button {
+    position: relative;
+
+    z-index: 30;
+
+    min-width: 190px;
+
+    margin: 12px;
+
+    padding: 20px 30px;
+
+    border: 6px solid white;
+
+    border-radius: 18px;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    color: white;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #76ff00,
+            #00ffff,
+            #0088ff,
+            #8a00ff,
+            #ff00ee,
+            #ff003c,
+            #ff6600,
+            #ffff00,
+            #76ff00
+        );
+
+    background-size: 900% 100%;
+
+    animation:
+        buttonRGB 0.055s linear infinite,
+        buttonPulse 0.035s ease-in-out infinite alternate;
+
+    text-shadow:
+        0 0 5px #000,
+        0 0 12px #000,
+        0 0 20px white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 30px #76ff00,
+        0 0 60px #00ffff,
+        0 0 90px #ff00ee,
+        0 0 120px #ff003c;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+}
+
+/* ============================================================
+   BOTÃO HOVER
+   ============================================================ */
+
+button:hover {
+    transform:
+        scale(1.2)
+        rotate(-2deg);
+
+    animation:
+        buttonRGB 0.025s linear infinite;
+
+    box-shadow:
+        0 0 15px white,
+        0 0 40px #76ff00,
+        0 0 80px #00ffff,
+        0 0 120px #8a00ff,
+        0 0 160px #ff00ee,
+        0 0 200px #ff003c;
+}
+
+/* ============================================================
+   BOTÃO ACTIVE
+   ============================================================ */
+
+button:active {
+    transform: scale(.9);
+}
+
+/* ============================================================
+   CALCULAR
+   ============================================================ */
+
+#calcular {
+    animation:
+        buttonRGB 0.018s linear infinite,
+        calculatePulse 0.015s ease-in-out infinite alternate;
+}
+
+/* ============================================================
+   LIMPAR
+   ============================================================ */
+
+#limpar {
+    animation:
+        buttonRGB 0.016s linear infinite,
+        buttonPulse 0.02s ease-in-out infinite alternate;
+}
+
+/* ============================================================
+   ANIMAÇÃO DO FUNDO
+   ============================================================ */
+
+@keyframes backgroundRGB {
+
+    0% {
+        background-position:
+            0% 0%,
+            100% 0%,
+            0% 100%,
+            100% 100%,
+            0% 50%;
+    }
+
+    20% {
+        background-position:
+            100% 0%,
+            0% 100%,
+            100% 0%,
+            0% 100%,
+            160% 50%;
+    }
+
+    40% {
+        background-position:
+            0% 100%,
+            100% 0%,
+            0% 0%,
+            100% 100%,
+            320% 50%;
+    }
+
+    60% {
+        background-position:
+            100% 100%,
+            0% 0%,
+            100% 100%,
+            0% 0%,
+            480% 50%;
+    }
+
+    80% {
+        background-position:
+            0% 0%,
+            100% 100%,
+            0% 100%,
+            100% 0%,
+            640% 50%;
+    }
+
+    100% {
+        background-position:
+            100% 100%,
+            0% 100%,
+            100% 0%,
+            0% 0%,
+            800% 50%;
+    }
+}
+
+/* ============================================================
+   RGB DO PAINEL
+   ============================================================ */
+
+@keyframes panelRGB {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 150% 0%;
+    }
+
+    50% {
+        background-position: 300% 50%;
+    }
+
+    75% {
+        background-position: 450% 100%;
+    }
+
+    100% {
+        background-position: 600% 50%;
+    }
+}
+
+/* ============================================================
+   ARCO-ÍRIS
+   ============================================================ */
+
+@keyframes rainbow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 125% 0%;
+    }
+
+    50% {
+        background-position: 250% 50%;
+    }
+
+    75% {
+        background-position: 375% 100%;
+    }
+
+    100% {
+        background-position: 500% 50%;
+    }
+}
+
+/* ============================================================
+   INPUT RGB
+   ============================================================ */
+
+@keyframes inputRGB {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    20% {
+        background-position: 140% 0%;
+    }
+
+    40% {
+        background-position: 280% 100%;
+    }
+
+    60% {
+        background-position: 420% 0%;
+    }
+
+    80% {
+        background-position: 560% 100%;
+    }
+
+    100% {
+        background-position: 700% 50%;
+    }
+}
+
+/* ============================================================
+   RESULTADOS RGB
+   ============================================================ */
+
+@keyframes resultRGB {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    20% {
+        background-position: 160% 0%;
+    }
+
+    40% {
+        background-position: 320% 100%;
+    }
+
+    60% {
+        background-position: 480% 0%;
+    }
+
+    80% {
+        background-position: 640% 100%;
+    }
+
+    100% {
+        background-position: 800% 50%;
+    }
+}
+
+/* ============================================================
+   BOTÕES RGB
+   ============================================================ */
+
+@keyframes buttonRGB {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    20% {
+        background-position: 180% 0%;
+    }
+
+    40% {
+        background-position: 360% 100%;
+    }
+
+    60% {
+        background-position: 540% 0%;
+    }
+
+    80% {
+        background-position: 720% 100%;
+    }
+
+    100% {
+        background-position: 900% 50%;
+    }
+}
+
+/* ============================================================
+   TEXTO RGB
+   ============================================================ */
+
+@keyframes textRGB {
+
+    0% {
+        color: #76ff00;
+    }
+
+    12.5% {
+        color: #c6ff00;
+    }
+
+    25% {
+        color: #00ffff;
+    }
+
+    37.5% {
+        color: #0088ff;
+    }
+
+    50% {
+        color: #8a00ff;
+    }
+
+    62.5% {
+        color: #ff00ee;
+    }
+
+    75% {
+        color: #ff003c;
+    }
+
+    87.5% {
+        color: #ff6600;
+    }
+
+    100% {
+        color: #ffff00;
+    }
+}
+
+/* ============================================================
+   PULSO DO PAINEL
+   ============================================================ */
+
+@keyframes panelPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.008);
+    }
+
+    100% {
+        transform: scale(1.015);
+    }
+}
+
+/* ============================================================
+   PULSO DOS BOTÕES
+   ============================================================ */
+
+@keyframes buttonPulse {
+
+    from {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(2.2);
+    }
+
+    to {
+        filter: brightness(3);
+    }
+}
+
+/* ============================================================
+   PULSO DO CALCULAR
+   ============================================================ */
+
+@keyframes calculatePulse {
+
+    from {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(2.8);
+    }
+
+    to {
+        filter: brightness(4);
+    }
+}
+
+/* ============================================================
+   PULSO DOS RESULTADOS
+   ============================================================ */
+
+@keyframes resultPulse {
+
+    from {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(2);
+    }
+
+    to {
+        filter: brightness(3);
+    }
+}
+
+/* ============================================================
+   SHAKE DOS TEXTOS
+   ============================================================ */
+
+@keyframes textShake {
+
+    0% {
+        transform: translateX(-2px);
+    }
+
+    25% {
+        transform: translateX(2px);
+    }
+
+    50% {
+        transform: translateX(-2px);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+
+    100% {
+        transform: translateX(-2px);
+    }
+}
+
+/* ============================================================
+   BRILHO PASSANDO
+   ============================================================ */
+
+@keyframes shine {
+
+    0% {
+        background-position: -300% -300%;
+    }
+
+    25% {
+        background-position: -100% -100%;
+    }
+
+    50% {
+        background-position: 0% 0%;
+    }
+
+    75% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 300% 300%;
+    }
+}
+
+/* ============================================================
+   RAVE
+   ============================================================ */
+
+@keyframes rave {
+
+    0% {
+        transform:
+            rotate(0deg)
+            scale(1);
+
+        filter:
+            hue-rotate(0deg)
+            saturate(200%);
+    }
+
+    20% {
+        transform:
+            rotate(4deg)
+            scale(1.08);
+
+        filter:
+            hue-rotate(72deg)
+            saturate(300%);
+    }
+
+    40% {
+        transform:
+            rotate(-4deg)
+            scale(1.15);
+
+        filter:
+            hue-rotate(144deg)
+            saturate(400%);
+    }
+
+    60% {
+        transform:
+            rotate(5deg)
+            scale(1.08);
+
+        filter:
+            hue-rotate(216deg)
+            saturate(300%);
+    }
+
+    80% {
+        transform:
+            rotate(-3deg)
+            scale(1.12);
+
+        filter:
+            hue-rotate(288deg)
+            saturate(400%);
+    }
+
+    100% {
+        transform:
+            rotate(0deg)
+            scale(1);
+
+        filter:
+            hue-rotate(360deg)
+            saturate(200%);
+    }
+}
+
+/* ============================================================
+   GRID RGB
+   ============================================================ */
+
+@keyframes gridRGB {
+
+    0% {
+        background-position: 0 0;
+
+        filter:
+            hue-rotate(0deg)
+            saturate(200%);
+    }
+
+    20% {
+        background-position: 14px 14px;
+
+        filter:
+            hue-rotate(72deg)
+            saturate(300%);
+    }
+
+    40% {
+        background-position: 28px 28px;
+
+        filter:
+            hue-rotate(144deg)
+            saturate(400%);
+    }
+
+    60% {
+        background-position: 42px 42px;
+
+        filter:
+            hue-rotate(216deg)
+            saturate(300%);
+    }
+
+    80% {
+        background-position: 56px 56px;
+
+        filter:
+            hue-rotate(288deg)
+            saturate(400%);
+    }
+
+    100% {
+        background-position: 70px 70px;
+
+        filter:
+            hue-rotate(360deg)
+            saturate(200%);
+    }
+}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 15px;
+
+        overflow-y: auto;
+    }
+
+    #Equacao {
+        width: 100%;
+
+        padding: 30px 15px;
+    }
+
+    #Equacao > div {
+        padding: 15px;
+    }
+
+    input {
+        width: 100px;
+
+        padding: 14px 5px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    button {
+        width: 90%;
+
+        min-width: 0;
+    }
+}
+
+/* ============================================================
+   ACESSIBILIDADE
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+    }
+}

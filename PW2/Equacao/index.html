@@ -10,10 +10,20 @@
 <body>
     <form id="Equacao">
     <div >
-        <input type="text" id="valorA" placeholder="Valor A" autocomplete="off">
-        <input type="text" id="valorB" placeholder="Valor B" autocomplete="off">
-        <input type="text" id="valorC" placeholder="Valor C" autocomplete="off">
+        <input type="text" id="valorA" placeholder="Valor A" >
+        <label id="label1">x2 + </label>
+        <input type="text" id="valorB" placeholder="Valor B" >
+        <label id="label2">x + </label>
+        <input type="text" id="valorC" placeholder="Valor C" >
+        <label id="label3">= 0 </label><br><br>
     </div>
+    <input type="text" id="resudelta" placeholder="delta" readonly ><br><br>
+    <input type="text" id="raiz1" placeholder="1° Raiz" readonly><br>
+    <input type="text" id="raiz2" placeholder="2° Raiz" readonly><br><br>
+
+
+    <button type="reset" id="limpar">Limpar</button>
+    <button type="button" id="calcular" data-operacao="calc">Calcular</button>
 
 
 
@@ -22,7 +32,7 @@
 
 
 
-<script src="abdullJabbhar.js"></script>
+<script src="js.js"></script>
 
 </body>
 </html>
